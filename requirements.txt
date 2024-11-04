@@ -2,4 +2,4 @@ ipython
 pandas
 pyarrow
 numpy
-pyspark
+pyspark==3.4.4

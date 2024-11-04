@@ -26,9 +26,9 @@ RUN mkdir -p ${HADOOP_HOME} && mkdir -p ${SPARK_HOME}
 WORKDIR ${SPARK_HOME}
 
 
-RUN curl https://dlcdn.apache.org/spark/spark-3.5.3/spark-3.5.3-bin-hadoop3.tgz -o spark-3.5.3-bin-hadoop3.tgz \
- && tar xvzf spark-3.5.3-bin-hadoop3.tgz --directory /opt/spark --strip-components 1 \
- && rm -rf spark-3.5.3-bin-hadoop3.tgz
+RUN curl https://dlcdn.apache.org/spark/spark-3.4.4/spark-3.4.4-bin-hadoop3.tgz -o spark-3.4.4-bin-hadoop3.tgz \
+ && tar xvzf spark-3.4.4-bin-hadoop3.tgz --directory /opt/spark --strip-components 1 \
+ && rm -rf spark-3.4.4-bin-hadoop3.tgz
 
 
 FROM spark-base as pyspark

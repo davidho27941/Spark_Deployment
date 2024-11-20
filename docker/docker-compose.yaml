@@ -19,8 +19,10 @@ services:
     env_file:
       - .env.spark
     ports:
-      - '9090:8080'
-      - '7077:7077'
+      - '192.168.0.31:9090:8080'
+      - '192.168.0.31:7077:7077'
+    networks:
+      - spark-network
 
 
   spark-history-server:
@@ -37,6 +39,8 @@ services:
       - '18080:18080'
     depends_on:
       - spark-master
+    networks:
+      - spark-network
 
   spark-worker:
     build: 
@@ -51,6 +55,10 @@ services:
       - ./book_data:/opt/spark/data
       - ./spark_apps:/opt/spark/apps
       - spark-logs:/opt/spark/spark-events
-
+    networks:
+      - spark-network
 volumes:
   spark-logs:
+
+networks:
+  spark-network:

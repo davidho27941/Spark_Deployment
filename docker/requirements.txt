@@ -3,3 +3,4 @@ pandas
 pyarrow
 numpy
 pyspark==3.4.4
+jupyterlab

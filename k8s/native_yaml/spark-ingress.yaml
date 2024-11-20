@@ -1,0 +1,58 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spark-ingress
+  namespace: spark
+
+spec:
+  rules:
+    - host: spark-jupyter.homelab.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name:  spark-client-svc
+                port:
+                  number: 8888
+    - host: spark-webui.homelab.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name:  spark-client-svc
+                port:
+                  number: 4040
+    - host: spark-shffle.homelab.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name:  spark-client-svc
+                port:
+                  number: 7337
+    - host: spark-block.homelab.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name:  spark-client-svc
+                port:
+                  number: 8001
+    - host: spark-driver.homelab.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name:  spark-client-svc
+                port:
+                  number: 8002

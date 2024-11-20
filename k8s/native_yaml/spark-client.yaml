@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-client
+  namespace: spark
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "spark-client"
+    
+    template:
+      metadata:
+        labels:
+          app: "spark-client"
+      
+      spec: 
+        serviceAccountName: "spark-account"
+        containers:
+        - name: "sparl-client"
+          image: "davidho9717/spark:3.4.4-jupyter"
+          command: ["jupyter"]
+          args: ["lab", "--allow-root", "--ServerApp.allow_remote_access=true", "--ip=0.0.0.0"]
+          ports:
+            - containerPort: 8888
+              name: notebook
+            - containerPort: 8002
+              name: driver-port
+            - containerPort: 8001
+              name: block-manager
+            - containerPort: 4040
+              name: web-ui
+            - containerPort: 7337
+              name: shuffle-service

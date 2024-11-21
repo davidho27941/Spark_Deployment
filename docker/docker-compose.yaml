@@ -19,8 +19,8 @@ services:
     env_file:
       - .env.spark
     ports:
-      - '192.168.0.31:9090:8080'
-      - '192.168.0.31:7077:7077'
+      - '<your host IP>:9090:8080'
+      - '<your host IP>:7077:7077'
     networks:
       - spark-network
 

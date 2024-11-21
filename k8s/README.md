@@ -27,7 +27,7 @@ metadata:
 
 ### Service Account
 
-接下來，我們設定一個名為`spark-account`的帳號：
+接下來，我們設定一個名為`spark-account`的帳號，並設定其對應的Token：
 
 ```
 apiVersion: v1
@@ -35,6 +35,16 @@ kind: ServiceAccount
 metadata:
   name: spark-account
   namespace: spark
+automountServiceAccountToken: true
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: spark-sa-secret
+  namespace: spark
+  annotations:
+    kubernetes.io/service-account.name: spark-account-new
+type: kubernetes.io/service-account-token
 ```
 
 ### Role

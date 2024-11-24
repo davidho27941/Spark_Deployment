@@ -155,7 +155,7 @@ spec:
     - name: "web-ui"
       port: 4040
       targetPort: 4040
-      - name: "suffle-service"
+    - name: "suffle-service"
       port: 7337
       targetPort: 7337
 ```
